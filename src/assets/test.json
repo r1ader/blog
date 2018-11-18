@@ -1,0 +1,18 @@
+{
+  "title": "论持久战",
+  "date": "论持久战",
+  "body": [
+    {
+      "type": "big",
+      "content": "一、根据页面的结构，由div派生的标签。"
+    },
+    {
+      "type": "small",
+      "content": "<time>标签，专门用来表示时间"
+    },
+    {
+      "type": "mid",
+      "content": "与<summary>标签配合使用可以为 details 定义标题。标题是可见的，用户点击标题时，会显示出"
+    }
+  ]
+}
