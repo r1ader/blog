@@ -4,8 +4,7 @@
     <div class="title">{{artJson.title}}</div>
     <div>{{artJson.date}}</div>
     <div>
-      <p v-for="(item,index) in artJson.body" :class="item.type">
-        {{item.content}}
+      <p v-for="(item,index) in artJson.body" :class="item.type" v-html="item.res">
       </p>
     </div>
   </div>
@@ -70,19 +69,7 @@
 
   p {
     text-align: left;
-    text-indent: 2rem;
+    /*text-indent: 2rem;*/
     margin: 15px;
-  }
-
-  .big {
-    font-size: 20px;
-  }
-
-  .mid {
-    font-size: 15px;
-  }
-
-  .small {
-    font-size: 10px;
   }
 </style>

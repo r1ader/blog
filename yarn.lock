@@ -3187,6 +3187,10 @@ he@1.2.x, he@^1.1.0:
   version "1.2.0"
   resolved "http://10.9.19.151:7001/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
 
+highlight.js@^9.13.1:
+  version "9.13.1"
+  resolved "http://10.9.19.151:7001/highlight.js/-/highlight.js-9.13.1.tgz#054586d53a6863311168488a0f58d6c505ce641e"
+
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "http://10.9.19.151:7001/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -4575,6 +4579,10 @@ markdown@^0.5.0:
   resolved "http://10.9.19.151:7001/markdown/-/markdown-0.5.0.tgz#28205b565a8ae7592de207463d6637dc182722b2"
   dependencies:
     nopt "~2.1.1"
+
+marked@^0.5.1:
+  version "0.5.1"
+  resolved "http://10.9.19.151:7001/marked/-/marked-0.5.1.tgz#062f43b88b02ee80901e8e8d8e6a620ddb3aa752"
 
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
