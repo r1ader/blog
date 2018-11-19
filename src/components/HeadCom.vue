@@ -4,10 +4,14 @@
       <div class="header-left">
         <span @click="toIndex">r1ader</span>
         <div>
-          <img src="@/assets/github.svg"/>
+          <a href="https://github.com/r1ader" target="_blank">
+            <img src="@/assets/github.svg"/>
+          </a>
         </div>
         <div>
-          <img src="@/assets/sina.svg"/>
+          <a href="https://weibo.com/u/6353368751" target="_blank">
+            <img src="@/assets/sina.svg"/>
+          </a>
         </div>
         <div>
           <img src="@/assets/mail.svg"/>
@@ -32,6 +36,9 @@
       },
       toCreate() {
         this.$router.push('/create')
+      },
+      displayMail() {
+        console.log('asdf')
       }
     },
     watch: {
@@ -53,6 +60,13 @@
     text-align: center;
     width: 100%;
     max-width: 1000px;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   header {
@@ -93,4 +107,5 @@
     }
 
   }
+
 </style>

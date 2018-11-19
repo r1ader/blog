@@ -195,6 +195,9 @@
     width: 50%;
     margin: 20px;
     user-focus: true;
+    border-radius: 5px;
+    border: 1px grey solid;
+    padding: 7px;
   }
 
   label {

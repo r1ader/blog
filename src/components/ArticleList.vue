@@ -3,8 +3,8 @@
     <article>
       <ul class="article-list">
         <li v-for="(item,index) in articleList" @click="seeArticle(item.index)">
-          {{item.title}}
           <span>{{item.date}}</span>
+          {{item.title}}
         </li>
       </ul>
     </article>
@@ -94,6 +94,7 @@
       padding: 10px;
       font-size: 16px;
       span {
+        margin-left: 30px;
         float: right;
       }
     }
