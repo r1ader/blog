@@ -42,9 +42,9 @@
       }
     },
     watch: {
-      '$route'(to, from) {
-        console.log(this.route)
-      }
+      // '$route'(to, from) {
+      //   console.log(this.route)
+      // }
     },
     created() {
       // console.log("$route", this.$route)

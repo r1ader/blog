@@ -2,26 +2,27 @@
   <div class="index">
     <HeadCom></HeadCom>
     <ArticleList></ArticleList>
+    <FootCom></FootCom>
   </div>
 </template>
 
 <script>
   import HeadCom from '@/components/HeadCom'
+  import FootCom from '@/components/FootCom'
   import ArticleList from '@/components/ArticleList'
   import MarkDown from 'markdown'
+
   export default {
     name: "Index",
     data() {
-      return{
-
-      }
+      return {}
     },
     components: {
       HeadCom,
-      ArticleList
+      ArticleList,
+      FootCom
     },
-    methods: {
-    },
+    methods: {},
     mounted() {
       console.clear()
       let doc = '# saffas'

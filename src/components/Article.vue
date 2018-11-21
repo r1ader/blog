@@ -3,15 +3,17 @@
     <HeadCom></HeadCom>
     <div class="title">{{artJson.title}}</div>
     <div>{{artJson.date}}</div>
-    <div>
+    <div class="article-body">
       <p v-for="(item,index) in artJson.body" :class="item.type" v-html="item.res">
       </p>
     </div>
+    <FootCom></FootCom>
   </div>
 </template>
 
 <script>
   import HeadCom from '@/components/HeadCom'
+  import FootCom from '@/components/FootCom'
 
   export default {
     name: "Article",
@@ -22,17 +24,18 @@
       }
     },
     components: {
-      HeadCom
+      HeadCom,
+      FootCom
     },
     watch: {
       '$route'(to, from) {
         if (!this.$route.params.id) return
-        console.log(to.name)
+        // console.log(to.name)
         this.index = this.$route.params.id
         // console.log(this.$route.params.id)
         this.$http.get(`static/${this.index}.json`).then(res => {
           this.artJson = res.body
-          console.log(this.artJson)
+          // console.log(this.artJson)
         }, (err) => {
           console.log(err)
         })
@@ -59,12 +62,16 @@
     display: inline-block;
     width: 100%;
     max-width: 1000px;
-
+    min-height: 50vh;
   }
 
   .title {
     font-size: 30px;
     margin: 20px;
+  }
+
+  .article-body {
+    min-height: 30vh;
   }
 
   p {

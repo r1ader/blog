@@ -73,6 +73,7 @@
     text-align: center;
     width: 100%;
     max-width: 1000px;
+    min-height: 50vh;
   }
 
   article {
@@ -89,7 +90,7 @@
     list-style: none;
     li {
       border-bottom: 1px #c1c1c1 solid;
-      background: rgba(50, 212, 97, 0.39);
+      background: rgba(214, 214, 214, 0.39);
       cursor: pointer;
       padding: 10px;
       font-size: 16px;

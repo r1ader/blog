@@ -46,7 +46,34 @@
           content: '',
           res: ''
         }],
-        articleTitle: ''
+        articleTitle: '',
+        filename: ''
+      }
+    },
+    watch: {
+      '$route'(to, from) {
+        if (from.name === 'Article') {
+          this.filename = from.params.id
+        } else {
+          this.filename = ''
+        }
+      },
+      filename: function () {
+        if (this.filename === '') {
+          this.parghList = [{
+            content: '',
+            res: ''
+          }]
+          this.articleTitle = ''
+          return
+        }
+        this.$http.get(`static/${this.filename}.json`).then(res => {
+          this.parghList = res.body.body
+          this.articleTitle = res.body.title
+          // console.log(res.body)
+        }, (err) => {
+          console.log(err)
+        })
       }
     },
     components: {
@@ -59,9 +86,9 @@
           date: moment().format('YYYY/MM/DD'),
           body: this.parghList,
         }
-        let titleValue = moment().format()
+        let titleValue = this.filename === '' ? moment().format() : this.filename
         console.log(JSON.stringify(res))
-        this.$http.post("http://localhost:3000/", {
+        this.$http.post("http://10.8.74.178:3000/", {
             data: JSON.stringify(res, null, '\t'),
             title: titleValue
           },
@@ -110,7 +137,7 @@
             res = '\n-----\n'
             break;
         }
-        this.parghList[index].content += res
+        // this.parghList[index].content += res
         let getNode = this.$refs.input.children[index].getElementsByTagName('textarea')[0]
         console.log(getNode)
         getNode.focus()
@@ -128,7 +155,7 @@
       console.clear()
     },
     mounted() {
-      console.log(1, moment().format())
+      // console.log(1, moment().format())
     }
   }
 </script>
