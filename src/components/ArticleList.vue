@@ -14,6 +14,8 @@
   import moment from 'moment'
   import HeadCom from '@/components/HeadCom'
 
+  import getDomain from '@/util/getDomain'
+
   export default {
     name: "ArticleList",
     data() {
@@ -25,7 +27,7 @@
       '$route'(to, from) {
         // console.log(to, from)
         if (to.name === 'Index') {
-          this.$http.get(`static/index.json`).then(res => {
+          this.$http.get(`${getDomain()}:3000/article/?id=index`).then(res => {
             this.addContent(res.body)
           })
         }
@@ -45,7 +47,7 @@
           this.articleList.push({
             index: prop,
             title: res[prop],
-            date: moment(prop).format('YYYY-MM-DD')
+            date: moment(prop, 'YYYY-MM-DD-HH-mm-ss').format('YYYY-MM-DD')
           })
         }
       },
@@ -55,7 +57,7 @@
       }
     },
     created() {
-      this.$http.get(`static/index.json`).then(res => {
+      this.$http.get(`${getDomain()}:3000/article/?id=index`).then(res => {
         this.addContent(res.body)
       })
     }

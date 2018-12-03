@@ -4,6 +4,12 @@
     <div>
       <label>Title: </label><input v-model="articleTitle" class="title" type="text" autofocus="autofocus"/>
     </div>
+    <div class="tag-list">
+      Tags：
+      <span v-for="(item,index) in tags">{{item}}</span>
+      <input type="text" v-model="tagInput"/>
+      <button @click="addTig()">add</button>
+    </div>
     <div class="create-body">
       <div class="create-body-input" ref="input">
         <div v-for="(item,index) in parghList">
@@ -34,20 +40,23 @@
 <script>
   import moment from 'moment'
   import HeadCom from '@/components/HeadCom'
-  import MarkDown from 'markdown'
   import marked from 'marked'
-  import hljs from 'highlight.js'
+
+  import getDomain from '@/util/getDomain'
 
   export default {
     name: "Create",
     data() {
       return {
+        tags: [],
         parghList: [{
           content: '',
-          res: ''
+          res:
+            ''
         }],
         articleTitle: '',
-        filename: ''
+        filename: '',
+        tagInput: ''
       }
     },
     watch: {
@@ -67,9 +76,11 @@
           this.articleTitle = ''
           return
         }
-        this.$http.get(`static/${this.filename}.json`).then(res => {
-          this.parghList = res.body.body
-          this.articleTitle = res.body.title
+        this.$http.get(`${getDomain()}:3000/article/?id=${encodeURIComponent(this.filename)}`).then(res => {
+          this.parghList = res.body.body || []
+          this.articleTitle = res.body.title || ''
+          this.tags = res.body.tags || []
+
           // console.log(res.body)
         }, (err) => {
           console.log(err)
@@ -83,12 +94,13 @@
       preserve() {
         let res = {
           title: this.articleTitle,
+          tags: this.tags,
           date: moment().format('YYYY/MM/DD'),
           body: this.parghList,
         }
-        let titleValue = this.filename === '' ? moment().format() : this.filename
+        let titleValue = this.filename === '' ? moment().format('YYYY-MM-DD-HH-mm-ss') : this.filename
         console.log(JSON.stringify(res))
-        this.$http.post("http://10.8.74.178:3000/", {
+        this.$http.post(`${getDomain()}:3000/create`, {
             data: JSON.stringify(res, null, '\t'),
             title: titleValue
           },
@@ -137,7 +149,7 @@
             res = '\n-----\n'
             break;
         }
-        // this.parghList[index].content += res
+        this.parghList[index].content += res
         let getNode = this.$refs.input.children[index].getElementsByTagName('textarea')[0]
         console.log(getNode)
         getNode.focus()
@@ -150,6 +162,12 @@
         }
         // this.parghList[index].content += res
       },
+      addTig() {
+        if (this.tags.indexOf(this.tagInput) === -1) {
+          this.tags.push(this.tagInput)
+        }
+        this.tagInput = ''
+      }
     },
     created() {
       console.clear()
@@ -177,6 +195,28 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+  }
+
+  .tag-list {
+    span {
+      background: #efefef;
+      border: 1px grey solid;
+      margin: 10px;
+      padding: 4px;
+      padding-left: 7px;
+      padding-right: 7px;
+      border-radius: 5px;
+      font-weight: bold;
+      color: #c33c66;
+    }
+    input {
+      font-size: 12px;
+      width: 5rem;
+      margin: 20px;
+      border-radius: 5px;
+      border: 1px grey solid;
+      padding: 7px;
+    }
   }
 
   @media screen and (max-width: 980px) {
