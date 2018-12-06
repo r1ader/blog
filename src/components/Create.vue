@@ -7,7 +7,12 @@
     </div>
     <div class="tag-list">
       Tags：
-      <span v-for="(item,index) in tags" :key="index">{{item}}</span>
+      <div v-for="(item,index) in tags" :key="index" class="tag-li">
+        <span>{{item}}</span>
+        <div style="width:0;position: relative;display:inline-block">
+          <div class="del" @click="delTag(index)">+</div>
+        </div>
+      </div>
       <input type="text" v-model="tagInput">
       <button @click="addTig()">add</button>
     </div>
@@ -108,6 +113,9 @@ export default {
     HeadCom
   },
   methods: {
+    delTag(index) {
+      this.tags.splice(index, 1);
+    },
     fileChange(el) {
       if (!el.target.files[0].size) return;
       console.log(el.target.files[0]);
@@ -273,6 +281,25 @@ export default {
     border-radius: 5px;
     border: 1px grey solid;
     padding: 7px;
+  }
+  .tag-li {
+    position: relative;
+    display: inline-block;
+    .del {
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      background-color: #c0c0c0;
+      position: absolute;
+      left: -25px;
+      top: -27px;
+      cursor: pointer;
+      transform: rotate(45deg);
+    }
+    .del:hover{
+      background-color: #808080;
+    }
   }
 }
 

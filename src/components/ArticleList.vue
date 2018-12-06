@@ -2,7 +2,7 @@
   <div class="index">
     <article>
       <ul class="article-list">
-        <li v-for="(item,index) in articleList" @click="seeArticle(item.index)">
+        <li v-for="(item,index) in articleList" @click="seeArticle(item.index)" :key="index">
           <span>{{item.date}}</span>
           {{item.title}}
         </li>

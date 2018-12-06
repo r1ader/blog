@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <hr>
-    <div class="main">
+    <div class="main" @click="jump()">
       <img class="logo" src="@/assets/logo.png">
       <br>
       <span>Code,</span>
@@ -13,34 +13,56 @@
 </template>
 
 <script>
-  export default {
-    name: "FootCom"
+export default {
+  name: "FootCom",
+  data() {
+    return {
+      clickNum: 0
+    };
+  },
+  methods: {
+    jump() {
+      // console.log(this.clickNum);
+      this.clickNum++;
+      if (this.clickNum >= 5) {
+        this.$router.push("/create");
+      }
+    }
+  },
+  created() {
+    setInterval(() => {
+      // console.log(this.clickNum)
+      if (this.clickNum > 0) {
+        this.clickNum = 0;
+      }
+    }, 2000);
   }
+};
 </script>
 
 <style scoped>
-  .index {
-    margin-top: 50px;
-    background: linear-gradient(top, #efefef, #FFF);
-  }
+.index {
+  margin-top: 50px;
+  background: linear-gradient(top, #efefef, #fff);
+}
 
-  .main {
-    display: inline-block;
-    /*width: 100%;*/
-    /*max-width: 940px;*/
-    background-color: #d6d6d6;
-    margin: 15px;
-    margin-top: 30px;
-    margin-bottom: 50px;
-    padding: 30px;
-    border-radius: 10px;
-    border-top: 1px solid grey;
-    border-right: 0;
-    /*border-bottom: 1px solid #d9d9d9;*/
-    border-left: 0;
-  }
+.main {
+  display: inline-block;
+  /*width: 100%;*/
+  /*max-width: 940px;*/
+  background-color: #d6d6d6;
+  margin: 15px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  padding: 30px;
+  border-radius: 10px;
+  border-top: 1px solid grey;
+  border-right: 0;
+  /*border-bottom: 1px solid #d9d9d9;*/
+  border-left: 0;
+}
 
-  .logo {
-    width: 50px;
-  }
+.logo {
+  width: 50px;
+}
 </style>
