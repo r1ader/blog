@@ -7,23 +7,26 @@
 </template>
 
 <script>
-  export default {
-    name: 'App'
-  }
+export default {
+  name: "App"
+};
 </script>
 
 <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    /*margin-top: 60px;*/
-  }
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  /*margin-top: 60px;*/
+}
 
-  body {
-    padding: 0;
-    margin: 0;
-  }
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url("./assets/backlogo.png");
+  background-repeat: repeat;
+  background-size: 100px;
+}
 </style>

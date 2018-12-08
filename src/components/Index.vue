@@ -1,35 +1,40 @@
 <template>
   <div class="index">
     <HeadCom></HeadCom>
+    <Show></Show>
     <ArticleList></ArticleList>
+    <FootCom></FootCom>
   </div>
 </template>
 
 <script>
-  import HeadCom from '@/components/HeadCom'
-  import ArticleList from '@/components/ArticleList'
-  import MarkDown from 'markdown'
-  export default {
-    name: "Index",
-    data() {
-      return{
+import HeadCom from "@/components/HeadCom";
+import Show from "@/components/Show";
+import FootCom from "@/components/FootCom";
+import ArticleList from "@/components/ArticleList";
+import MarkDown from "markdown";
 
-      }
-    },
-    components: {
-      HeadCom,
-      ArticleList
-    },
-    methods: {
-    },
-    mounted() {
-      console.clear()
-      let doc = '# saffas'
-      console.log(MarkDown.parse(doc))
-    }
+export default {
+  name: "Index",
+  data() {
+    return {};
+  },
+  components: {
+    HeadCom,
+    Show,
+    ArticleList,
+    FootCom
+  },
+  methods: {},
+  mounted() {
+    console.clear();
+    let doc = "# saffas";
+    console.log(MarkDown.parse(doc));
   }
+};
 </script>
 
 <style lang="scss" scoped>
-
+.index {
+}
 </style>
