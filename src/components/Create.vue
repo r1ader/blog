@@ -26,7 +26,12 @@
             <button @click="addPar(index,'javascript')">javascript</button>
             <button @click="addPar(index,'line')">line</button>
             <!-- <button @click="upload(index)"> -->
-            <input @change="fileChange($event)" type="file" id="upload_file" style="display:none">
+            <input
+              @change="fileChange($event,index)"
+              type="file"
+              id="upload_file"
+              style="display:none"
+            >
             <button @click="uploadFile(index)">file</button>
             <!-- upload -->
             <!-- </button> -->
@@ -72,6 +77,12 @@ export default {
       tagInput: ""
     };
   },
+  beforeRouteEnter(to, from, next) {
+    // console.log(from);
+    to.params.id = from.params.id;
+    console.log(to);
+    next();
+  },
   watch: {
     $route(to, from) {
       if (from.name === "Article") {
@@ -116,12 +127,12 @@ export default {
     delTag(index) {
       this.tags.splice(index, 1);
     },
-    fileChange(el) {
+    fileChange(el, index) {
       if (!el.target.files[0].size) return;
-      console.log(el.target.files[0]);
+      console.log(el.target.files[0].name);
       var formData = new FormData();
       formData.append("picture", el.target.files[0]);
-      // specify Content-Type, with formData as well
+
       this.$http
         .post(`${getDomain()}:3000/uploadimage`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
@@ -130,8 +141,17 @@ export default {
           function(res) {
             console.log(res.body.data);
             let fileUrl = `${getDomain()}:3000/${res.body.data}`;
-            this.parghList[0].content += "\n";
-            this.parghList[0].content += `![${res.body.data}](${fileUrl})`;
+            this.parghList[index].content += "\n";
+            this.parghList[
+              index
+            ].content += `<img src="${fileUrl}" class="p-img">`;
+            let getNode = this.$refs.input.children[index].getElementsByTagName(
+              "textarea"
+            )[0];
+
+            console.log(getNode);
+            getNode.focus();
+            this.parseMkdown(index);
           },
           function(res) {
             console.log(res.body);
@@ -236,6 +256,7 @@ export default {
   },
   created() {
     console.clear();
+    this.filename = this.$route.params.id;
   },
   mounted() {
     // console.log(1, moment().format())
@@ -297,7 +318,7 @@ export default {
       cursor: pointer;
       transform: rotate(45deg);
     }
-    .del:hover{
+    .del:hover {
       background-color: #808080;
     }
   }
