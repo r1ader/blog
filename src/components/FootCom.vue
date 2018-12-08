@@ -43,7 +43,20 @@ export default {
 <style scoped>
 .index {
   margin-top: 50px;
+  /*! autoprefixer: off */
+  background: -webkit-linear-gradient(top, #efefef, #fff);
+  background: -moz-linear-gradient(top, #efefef, #fff);
+  background: -o-linear-gradient(top, #efefef, #fff);
+  background: -ms-linear-gradient(top, #efefef, #fff);
   background: linear-gradient(top, #efefef, #fff);
+  /* autoprefixer: on */
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .main {

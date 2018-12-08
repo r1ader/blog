@@ -1,15 +1,17 @@
 <template>
-  <div class="container">
+  <div>
     <HeadCom></HeadCom>
-    <div class="title">{{artJson.title}}</div>
-    <div>{{artJson.date}}</div>
-    <div class="tag-list">
-      Tags：
-      <span v-for="(item,index) in artJson.tags" :key="index">{{item}}</span>
-    </div>
-    <hr>
-    <div class="article-body">
-      <p v-for="(item,index) in artJson.body" :class="item.type" v-html="item.res" :key="index"></p>
+    <div class="container">
+      <div class="title">{{artJson.title}}</div>
+      <div>{{artJson.date}}</div>
+      <div class="tag-list">
+        Tags：
+        <span v-for="(item,index) in artJson.tags" :key="index">{{item}}</span>
+      </div>
+      <hr>
+      <div class="article-body">
+        <p v-for="(item,index) in artJson.body" :class="item.type" v-html="item.res" :key="index"></p>
+      </div>
     </div>
     <FootCom></FootCom>
   </div>
