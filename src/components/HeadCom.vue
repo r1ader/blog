@@ -18,6 +18,11 @@
         </div>
         <!-- <div @click="toCreate"></div> -->
       </div>
+      <div class="header-right">
+        <div class="pic pic-select">CODE</div>
+        <div class="pic">PICTURE</div>
+        <div class="pic">STORY</div>
+      </div>
     </header>
     <div class="bottom"></div>
   </div>
@@ -77,6 +82,7 @@ header {
   display: inline-block;
   width: 100%;
   max-width: 1000px;
+  height: 50px;
   padding: 0;
   vertical-align: bottom;
 }
@@ -108,6 +114,35 @@ header {
       cursor: pointer;
     }
   }
+}
+
+.header-right {
+  float: right;
+}
+
+.pic {
+  line-height: 50px;
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  background: darkgray;
+  // border: 1px solid grey;
+}
+
+.pic-select {
+  background: -webkit-linear-gradient(bottom, grey, rgba(255, 255, 255, 0));
+  background: -moz-linear-gradient(bottom, grey, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(bottom, grey, rgba(255, 255, 255, 0));
+  background: -ms-linear-gradient(bottom, grey, rgba(255, 255, 255, 0));
+  background: linear-gradient(bottom, grey, rgba(255, 255, 255, 0));
+}
+
+.pic:hover {
+  background: -webkit-linear-gradient(bottom, grey, rgba(255, 255, 255, 0));
+  background: -moz-linear-gradient(bottom, grey, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(bottom, grey, rgba(255, 255, 255, 0));
+  background: -ms-linear-gradient(bottom, grey, rgba(255, 255, 255, 0));
+  background: linear-gradient(bottom, grey, rgba(255, 255, 255, 0));
 }
 
 .bottom {
