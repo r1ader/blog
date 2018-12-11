@@ -1,14 +1,17 @@
 <template>
   <div>
     <HeadCom></HeadCom>
-    <div class="container">
+    <div class="header">
       <div class="title">{{artJson.title}}</div>
       <div>{{artJson.date}}</div>
       <div class="tag-list">
         Tags：
         <span v-for="(item,index) in artJson.tags" :key="index">{{item}}</span>
       </div>
-      <hr>
+    </div>
+    <div class="bottom"></div>
+    <div class="container">
+      <!-- <hr> -->
       <div class="article-body">
         <p v-for="(item,index) in artJson.body" :class="item.type" v-html="item.res" :key="index"></p>
       </div>
@@ -82,8 +85,14 @@ export default {
   min-height: 50vh;
 }
 
+.header {
+  background: rgba(128, 128, 128, 0.205);
+  padding: 0;
+  margin: 0;
+}
+
 .tag-list {
-  margin: 20px;
+  padding: 20px;
   span {
     background: #efefef;
     border: 1px grey solid;
@@ -99,7 +108,7 @@ export default {
 
 .title {
   font-size: 30px;
-  margin: 20px;
+  padding: 20px;
 }
 
 .article-body {
@@ -114,5 +123,20 @@ p {
 
 img {
   background-color: #c33c66;
+}
+.bottom {
+  position: absolute;
+  width: 100%;
+  // max-width: 1000px;
+  height: 10px;
+  background: gray;
+  z-index: 2;
+  /*! autoprefixer: off */
+  background: -webkit-linear-gradient(top, grey, rgba(255, 255, 255, 0));
+  background: -moz-linear-gradient(top, grey, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(top, grey, rgba(255, 255, 255, 0));
+  background: -ms-linear-gradient(top, grey, rgba(255, 255, 255, 0));
+  background: linear-gradient(top, grey, rgba(255, 255, 255, 0));
+  /* autoprefixer: on */
 }
 </style>

@@ -35,7 +35,7 @@ export default {
       if (this.clickNum > 0) {
         this.clickNum = 0;
       }
-    }, 2000);
+    }, 10000);
   }
 };
 </script>

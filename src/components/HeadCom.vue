@@ -19,9 +19,8 @@
         <!-- <div @click="toCreate"></div> -->
       </div>
       <div class="header-right">
-        <div class="pic pic-select">CODE</div>
-        <div class="pic">PICTURE</div>
-        <div class="pic">STORY</div>
+        <div :class="route==='Index'?`pic pic-select`:`pic`" @click="jump('')">ARTICLE</div>
+        <div :class="route==='game'?`pic pic-select`:`pic`" @click="jump('game')">GAME</div>
       </div>
     </header>
     <div class="bottom"></div>
@@ -45,6 +44,9 @@ export default {
     },
     displayMail() {
       console.log("asdf");
+    },
+    jump(path) {
+      this.$router.push(`/${path}`);
     }
   },
   watch: {
@@ -53,9 +55,10 @@ export default {
     // }
   },
   created() {
-    // console.log("$route", this.$route)
     // console.log("$router", this.$router)
     this.route = this.$route.name;
+
+    // console.log("$route", this.route);
   }
 };
 </script>
@@ -127,6 +130,12 @@ header {
   height: 50px;
   background: darkgray;
   // border: 1px solid grey;
+}
+
+@media screen and (max-width: 580px) {
+  .pic {
+    display: none;
+  }
 }
 
 .pic-select {

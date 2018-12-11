@@ -27,9 +27,7 @@ export default {
   },
   methods: {},
   mounted() {
-    console.clear();
-    let doc = "# saffas";
-    console.log(MarkDown.parse(doc));
+    // console.clear();
   }
 };
 </script>
