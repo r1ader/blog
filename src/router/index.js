@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Index from '@/components/Index'
 import Article from '@/components/Article'
 import Create from '@/components/Create'
-import Game from '@/components/game/LifeGame'
+import Game from '@/components/game/ClockGame'
 
 Vue.use(Router)
 

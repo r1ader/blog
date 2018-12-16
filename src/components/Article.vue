@@ -4,9 +4,10 @@
     <div class="header">
       <div class="title">{{artJson.title}}</div>
       <div>{{artJson.date}}</div>
-      <div class="tag-list">
-        Tags：
-        <span v-for="(item,index) in artJson.tags" :key="index">{{item}}</span>
+      <div class="tag-list">Tags：
+        <div v-for="(item,index) in artJson.tags" :key="index">
+          <span>{{item}}</span>
+        </div>
       </div>
     </div>
     <div class="bottom"></div>
@@ -93,6 +94,11 @@ export default {
 
 .tag-list {
   padding: 20px;
+  // width: 1000px;
+  div {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
   span {
     background: #efefef;
     border: 1px grey solid;
@@ -103,6 +109,7 @@ export default {
     border-radius: 5px;
     font-weight: bold;
     color: #c33c66;
+    overflow: hidden;
   }
 }
 
