@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import Index from '@/components/Index'
 import Article from '@/components/Article'
 import Create from '@/components/Create'
-import Game from '@/components/game/ClockGame'
+import ClockGame from '@/components/game/ClockGame'
+import LifeGame from '@/components/game/LifeGame'
 
 Vue.use(Router)
 
@@ -24,9 +25,14 @@ export default new Router({
       component: Create
     },
     {
-      path: '/game',
-      name: 'game',
-      component: Game
+      path: '/demo/life',
+      name: 'Life',
+      component: LifeGame
+    },
+    {
+      path: '/demo/clock',
+      name: 'Clock',
+      component: ClockGame
     }
   ]
 })

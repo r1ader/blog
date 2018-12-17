@@ -19,8 +19,8 @@
         <!-- <div @click="toCreate"></div> -->
       </div>
       <div class="header-right">
-        <div :class="route==='Index'?`pic pic-select`:`pic`" @click="jump('')">ARTICLE</div>
-        <div :class="route==='game'?`pic pic-select`:`pic`" @click="jump('game')">GAME</div>
+        <div :class="(route)==='/'?`pic pic-select`:`pic`" @click="jump('')">ARTICLE</div>
+        <div :class="/demo/.test(route)?`pic pic-select`:`pic`" @click="jump('demo/clock')">DEMO</div>
       </div>
     </header>
     <div class="bottom"></div>
@@ -32,8 +32,13 @@ export default {
   name: "HeadCom",
   data() {
     return {
-      route: ""
+      // route: ""
     };
+  },
+  computed: {
+    route: function() {
+      return this.$route.path;
+    }
   },
   methods: {
     toIndex() {
@@ -46,6 +51,7 @@ export default {
       console.log("asdf");
     },
     jump(path) {
+      // console.log(this.$route);
       this.$router.push(`/${path}`);
     }
   },
@@ -56,8 +62,7 @@ export default {
   },
   created() {
     // console.log("$router", this.$router)
-    this.route = this.$route.name;
-
+    // this.route = this.$route.name;
     // console.log("$route", this.route);
   }
 };
